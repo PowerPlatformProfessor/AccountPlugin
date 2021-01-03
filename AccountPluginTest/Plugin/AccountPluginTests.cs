@@ -1,4 +1,6 @@
-﻿using FakeXrmEasy;
+﻿using AccountPlugin.Plugin;
+using FakeXrmEasy;
+using Microsoft.Xrm.Sdk;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +13,26 @@ namespace AccountPluginTest.Plugin
     public class AccountPluginTests
     {
         private readonly XrmFakedContext _context;
+        private readonly Entity _account;
+        //private readonly Entity _contact;
+
+
+        public AccountPluginTests()
+        {
+            _context = new XrmFakedContext();
+            _account = new Entity("account", Guid.NewGuid());
+            //_contact = new Entity("contact", Guid.NewGuid());
+        }
 
         [Fact]
         public void Given_AccountCreated_When_Then_CreateDummyContact()
         {
-            Assert.True(false);
+
+            _context.ExecutePluginWithTarget<Account>(_account);
+
+            var contact = _context.CreateQuery("contact").FirstOrDefault();
+
+            Assert.NotNull(contact);
         }
     }
 }
