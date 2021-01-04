@@ -21,6 +21,7 @@ namespace AccountPluginTest.Plugin
         {
             _context = new XrmFakedContext();
             _account = new Entity("account", Guid.NewGuid());
+            _account["name"] = "Test";
             //_contact = new Entity("contact", Guid.NewGuid());
         }
 
@@ -33,6 +34,7 @@ namespace AccountPluginTest.Plugin
             var contact = _context.CreateQuery("contact").FirstOrDefault();
 
             Assert.NotNull(contact);
+            Assert.Equal(contact["parentaccount"], _account.Id);
         }
     }
 }
