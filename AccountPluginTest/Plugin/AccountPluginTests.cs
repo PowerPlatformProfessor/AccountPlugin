@@ -34,10 +34,10 @@ namespace AccountPluginTest.Plugin
             _context.ExecutePluginWithTarget<Account>(_account);
 
             var contact = _context.CreateQuery("contact").FirstOrDefault();
-
+            
             //Assert
             Assert.NotNull(contact);
-            Assert.Equal(_account.Id, contact["parentaccount"]);
+            Assert.Equal(_account.Id, ((EntityReference)contact["parentaccount"]).Id);
         }
 
         [Fact]
