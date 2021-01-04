@@ -26,15 +26,37 @@ namespace AccountPluginTest.Plugin
         }
 
         [Fact]
-        public void Given_AccountCreated_When_Then_CreateDummyContact()
+        public void Given_When_PluginExecutesCreateAccount_Then_CreateDummyContact()
         {
+            //Arrange - can use testData from constructor or specific data defined her under arrange
 
+            //Act
             _context.ExecutePluginWithTarget<Account>(_account);
 
             var contact = _context.CreateQuery("contact").FirstOrDefault();
 
+            //Assert
             Assert.NotNull(contact);
-            Assert.Equal(contact["parentaccount"], _account.Id);
+            Assert.Equal(_account.Id, contact["parentaccount"]);
+        }
+
+        [Fact]
+        public void Given_AccountAlreadyExists_When_PluginExecutesCreateAccount_Then_DontCreateContact()
+        {
+            //Arrange - can use testData from constructor or specific data defined her under arrange
+            var existingAccount = new Entity("account", Guid.NewGuid());
+            existingAccount["name"] = "Test";
+            _context.Initialize(existingAccount);
+
+
+            //Act
+            _context.ExecutePluginWithTarget<Account>(_account);
+
+
+            //Assert
+            var contact = _context.CreateQuery("contact").FirstOrDefault();
+            Assert.Null(contact);
+
         }
     }
 }
