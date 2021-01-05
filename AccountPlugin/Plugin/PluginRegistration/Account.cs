@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AccountPlugin.Plugin
+namespace AccountPlugin.Plugin.PluginRegistration
 {
     public class Account : IPlugin
     {
@@ -16,7 +16,7 @@ namespace AccountPlugin.Plugin
             var serviceFacotry = (IOrganizationServiceFactory)serviceProvider.GetService(typeof(IOrganizationServiceFactory));
             var service = (IOrganizationService)serviceFacotry.CreateOrganizationService(context.UserId);
 
-            var account = new EntityNS.Account(service, context);
+            var account = new TargetEntity.Account(service, context);
             account.runLogic();
         }
 

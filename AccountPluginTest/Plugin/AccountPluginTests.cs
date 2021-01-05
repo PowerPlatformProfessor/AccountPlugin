@@ -1,4 +1,5 @@
 ﻿using AccountPlugin.Plugin;
+using AccountPlugin.Plugin.PluginRegistration;
 using FakeXrmEasy;
 using Microsoft.Xrm.Sdk;
 using System;

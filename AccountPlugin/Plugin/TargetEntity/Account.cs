@@ -1,5 +1,4 @@
-﻿using AccountPlugin.EntityNS;
-using Microsoft.Xrm.Sdk;
+﻿using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Client;
 using System;
 using System.Collections.Generic;
@@ -7,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AccountPlugin.EntityNS
+namespace AccountPlugin.Plugin.TargetEntity
 {
     public class Account : EntityBase
     {

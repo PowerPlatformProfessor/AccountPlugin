@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AccountPlugin.EntityNS
+namespace AccountPlugin.Plugin.TargetEntity
 {
     public abstract class EntityBase
     {
