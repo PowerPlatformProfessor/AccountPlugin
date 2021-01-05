@@ -55,7 +55,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Plugin\Account.cs" />
+    <Compile Include="Entity\Account.cs" />
+    <Compile Include="Entity\EntityBase.cs" />
+    <Compile Include="Enum\SdkMessageEnum.cs" />
+    <Compile Include="Plugin.TargetEntity\Account.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
