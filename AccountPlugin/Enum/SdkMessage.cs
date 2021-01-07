@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AccountPlugin.Enum
 {
-    public class SdkMessageEnum
+    public class SdkMessage
     {
         public const string Create ="Create";
         public const string Update = "Update";

@@ -22,13 +22,13 @@ namespace AccountPlugin.Plugin.PrimaryEntity
         {
             switch (_context.MessageName)
             {
-                case SdkMessageEnum.Create:
+                case SdkMessage.Create:
                     executeLogicBasedOnStageName(null, null, CreatePostOperation);
                     break;
-                case SdkMessageEnum.Update:
+                case SdkMessage.Update:
                     executeLogicBasedOnStageName(null, null, UpdatePostOperation);
                     break;
-                case SdkMessageEnum.Delete:
+                case SdkMessage.Delete:
                     executeLogicBasedOnStageName(DeletePreOperation, null, null);
                     break;
                 default:
