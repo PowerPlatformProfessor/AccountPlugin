@@ -37,25 +37,25 @@ namespace AccountPlugin.Plugin.PrimaryEntity
 
 
         }
-        private delegate void preValidation();
-        private delegate void preOperation();
-        private delegate void postOperation();
+        private delegate void preValidationLogic();
+        private delegate void preOperationLogic();
+        private delegate void postOperationLogic();
 
         private void executeLogicBasedOnStageName(
-            preValidation preValidation = null, preOperation preOperation = null, postOperation postOperation = null)
+            preValidationLogic preValidationLogic = null, preOperationLogic preOperationLogic = null, postOperationLogic postOperationLogic = null)
         {
             if (_context.Stage == (int)StageName.PreValidation)
             {
                 //kan ha delegate function som gör vissa boilerplate kollar för en viss typ av operation och därefter exekverar preValidation inne i den.
-                preValidation();
+                preValidationLogic();
             }
             else if (_context.Stage == (int)StageName.PreOperation)
             {
-                preOperation();
+                preOperationLogic();
             }
             else if (_context.Stage == (int)StageName.PostOperation)
             {
-                postOperation();
+                postOperationLogic();
             }
         }
 
