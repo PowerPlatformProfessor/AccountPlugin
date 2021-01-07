@@ -16,8 +16,15 @@ namespace AccountPlugin.Plugin.PluginRegistration
             var serviceFacotry = (IOrganizationServiceFactory)serviceProvider.GetService(typeof(IOrganizationServiceFactory));
             var service = (IOrganizationService)serviceFacotry.CreateOrganizationService(context.UserId);
 
-            var account = new PrimaryEntity.Account(service, context);
-            account.runLogic();
+            try
+            {
+                var account = new PrimaryEntity.Account(service, context);
+                account.runLogic();
+            } catch(Exception ex)
+            {
+                throw new InvalidPluginExecutionException(ex.Message);
+            }
+            
         }
 
     }
