@@ -26,10 +26,10 @@ namespace AccountPlugin.Plugin.PrimaryEntity
                     executeLogicBasedOnStageName(null, null, CreatePostOperation);
                     break;
                 case SdkMessage.Update:
-                    executeLogicBasedOnStageName(null, null, UpdatePostOperation);
+                    executeLogicBasedOnStageName(UpdatePreValidation, UpdatePreOperation, UpdatePostOperation);
                     break;
                 case SdkMessage.Delete:
-                    executeLogicBasedOnStageName(DeletePreOperation, null, null);
+                    executeLogicBasedOnStageName(null, DeletePreOperation, null);
                     break;
                 default:
                     break;
@@ -46,6 +46,7 @@ namespace AccountPlugin.Plugin.PrimaryEntity
         {
             if (_context.Stage == (int)StageName.PreValidation)
             {
+                //kan ha delegate function som gör vissa boilerplate kollar för en viss typ av operation och därefter exekverar preValidation inne i den.
                 preValidation();
             }
             else if (_context.Stage == (int)StageName.PreOperation)
@@ -59,7 +60,17 @@ namespace AccountPlugin.Plugin.PrimaryEntity
         }
 
         public abstract void CreatePostOperation();
+
         public abstract void UpdatePostOperation();
+        public virtual void UpdatePreValidation()
+        {
+
+        }
+        public virtual void UpdatePreOperation()
+        {
+
+        }
+
         public abstract void DeletePreOperation();
 
         //these are optional to implement in derivate
