@@ -6,14 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AccountPlugin.Plugin.TargetEntity
+namespace AccountPlugin.Plugin.PrimaryEntity
 {
     public class Account : EntityBase
     {
         public Account(IOrganizationService service, IPluginExecutionContext context) : base(service, context){
 
         }
-        public override void Create()
+        public override void CreatePostOperation()
         {
 
             if (_context.InputParameters.Contains("Target") && _context.InputParameters["Target"] is Entity)
@@ -33,12 +33,12 @@ namespace AccountPlugin.Plugin.TargetEntity
             }
         }
 
-        public override void Delete()
+        public override void DeletePreOperation()
         {
             throw new NotImplementedException();
         }
 
-        public override void Update()
+        public override void UpdatePostOperation()
         {
             throw new NotImplementedException();
         }

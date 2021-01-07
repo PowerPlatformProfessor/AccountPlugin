@@ -16,7 +16,7 @@ namespace AccountPlugin.Plugin.PluginRegistration
             var serviceFacotry = (IOrganizationServiceFactory)serviceProvider.GetService(typeof(IOrganizationServiceFactory));
             var service = (IOrganizationService)serviceFacotry.CreateOrganizationService(context.UserId);
 
-            var account = new TargetEntity.Account(service, context);
+            var account = new PrimaryEntity.Account(service, context);
             account.runLogic();
         }
 

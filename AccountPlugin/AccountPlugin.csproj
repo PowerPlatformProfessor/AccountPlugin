@@ -55,8 +55,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Plugin\TargetEntity\Account.cs" />
-    <Compile Include="Plugin\TargetEntity\EntityBase.cs" />
+    <Compile Include="Enum\StageName.cs" />
+    <Compile Include="Plugin\PrimaryEntity\Account.cs" />
+    <Compile Include="Plugin\PrimaryEntity\EntityBase.cs" />
     <Compile Include="Enum\SdkMessageEnum.cs" />
     <Compile Include="Plugin\PluginRegistration\Account.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
